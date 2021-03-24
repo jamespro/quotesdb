@@ -28,15 +28,18 @@ MongoClient.connect(config.connectionString, { useUnifiedTopology: true })
       console.log('Connected to Database')
       const db = client.db('quotemaster')
       const quotesCollection = db.collection('quotes')
-    //   app.use(/* */)
+
+      app.set('view engine','ejs')
+
+      //   app.use(/* */)
     //   app.get(/* */)
       app.get('/', (req, res) => {
           const cursor = db.collection('quotes').find().toArray()
               .then(results => {
-              console.log(results)
+              res.render('index.ejs', {quotes: results})
               })
           .catch(error => console.error(error))
-
+          
       })
     //   app.post(/* */)
     app.post('/quotes', (req, res) => {
