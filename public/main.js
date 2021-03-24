@@ -11,4 +11,10 @@ update.addEventListener('click', _ => {
         })
         
     })
+    .then(res=> {
+        if (res.ok) return res.json()
+    })
+    .then(response =>{
+        console.log(response)
+    })
 })
