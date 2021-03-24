@@ -19,8 +19,8 @@
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-    <section>
-        <h1>Quotes</h1>
+        <section>
+            <h1>Quotes</h1>
         <form action="/quotes" method="POST">
             <input type="text" placeholder="name" name="name">
             <input type="text" placeholder="quote" name="quote">
@@ -29,17 +29,23 @@
     </section>
     <section>
         <ul>
-        <% for(var i=0; i < quotes.length; i++) {%>
-            <li class="quote">
-                <%=quotes[i].name %> - 
-                <%=quotes[i].quote %>
-            </li>
-        <% } %>
-        </ul>
-
-    </section>
-
-    <script src="" async defer></script>
-</body>
-
+            <% for(var i=0; i < quotes.length; i++) {%>
+                <li class="quote">
+                    <%=quotes[i].name %> - 
+                    <%=quotes[i].quote %>
+                </li>
+                <% } %>
+            </ul>
+        </section>
+        <section>
+            <h2>Update</h2>
+            <p>
+                Replace first quote with another quote written by Darth Vader
+            </p>
+            <button id="update-button">Replace quote</button>
+        </section>
+        
+        <script src="/main.js" async defer></script>
+    </body>
+    
 </html>
