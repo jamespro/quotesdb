@@ -9,12 +9,35 @@ update.addEventListener('click', _ => {
             name: 'Victor Hugo',
             quote: 'There is nothing like a dream to create the future.'
         })
-        
     })
-    .then(res=> {
+    .then(res => {
         if (res.ok) return res.json()
     })
-    .then(response =>{
+    .then(response => {
         console.log(response)
     })
+})
+
+const deleteButton = document.querySelector('#delete-button')
+const messageDiv = document.querySelector('#deleteMessage')
+
+deleteButton.addEventListener('click',_ => {
+    fetch('/quotes',{
+        method:'delete',
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            name: 'Victor Hugo'
+        })
+    })
+    .then(res=>{
+        if (res.ok) return res.json()
+    })
+    .then(response => {
+       if (response === 'No quote to delete') {
+           messageDiv.textContent = 'No fancy quote to delete'
+       } else {
+        window.location.reload(true)
+       }
+    })
+    .catch(error=>console.error(error))
 })
