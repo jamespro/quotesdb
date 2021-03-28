@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-PORT = 3000
+const PORT = 3000
 const MongoClient = require('mongodb').MongoClient
 
 var config = require('./secrets/config');
